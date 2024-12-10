@@ -185,3 +185,11 @@ ALTERANDO PROPRIEDADE
 	sudo chgrp grupo c.txt
 
 history: mostra os últimos comandos utilizados
+
+COMPACTANDO/DESCOMPACTANDO ARQUIVOS
+	tar -czvf compactado.tar.gz
+	tar -czvf compactado.tar.gz c.txt doc.txt pictures/videos
+	tar -xzvf compactado.tar.gz (descompactando)
+	tar -xzvf compactado.tar.gz (descompactando) -C descompactados/arquivos (mandando para um diretório especifico)
+	zip -r compactado.zip dir6 (compactando em zip)
+	unzip compactado.zip -d videos/ (descompactando em zip)
