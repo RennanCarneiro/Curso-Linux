@@ -1,0 +1,187 @@
+Comandos Linux
+
+Estrutura dos comandos 
+		COMANDOS  -OPÇÕES ARQUIVOS ( ls -ltr downloads/)
+
+Terminal do Linux
+	TAB completa o comando e dá sugestões caso tenha mais de um comando parecido.
+	Tecla pra cima puxa os comandos utilizados anteriormente.
+	A variável declarada em um terminal, só é válida no terminal em que foi declarada.
+	Linux é case sensitive, ou seja, AULA =! aula =! AuLa =! auLa , por exemplo.
+	
+CD (CHANGE DIRECTORY)
+	cd Desktop ->> vai para o diretorio do desktop
+	cd / --> consegue ir diretamente pro diretorio desejado (cd /etc/fonts/)
+	cd .. -> volta para o diretorio anterior (cd ../../../ voltou 3 diretorios)
+	cd - ->> mostra o ultimo diretorio que estava/ volta pro diretorio anterior
+	cd ~ -> vai direto para home
+	cd ../etc -> volta o diretorio e vai para um diretoro desejado(etc)
+	cd etc && ls -> linux voce pode utilizar dois comandos ao mesmo tempo.
+
+LS (LIST ARCHIVES)
+	ls -> mostra a lista
+	ls -l -> mostra todods os arquivos em detalhes
+	ls -a -> mostra os arquivos ocultos
+	ls -la -> mostrando os ocultos e os arquivos em detalhes (no linux é possivel combinar comandos)
+	ls -lh -> mostrar o tamanho do arquivos
+	ls -ltr -> mostra a data de modificação do arquivo
+	ls -l /etc - > lista os arquivos dos diretorios desejados
+	ls -lr /etc -> mostra a lista em ordem reversa
+	ls -R -> mostra o que tem dentro de cada pasta
+	ls -lS -> ordena pelo tamanho do arquivo
+	ls -m -> separa por virgula
+	ls --help -> manual de ajuda
+	
+CAT (criar um arquivo)
+	cat nome do arquivo -> ve o conteudo do arquivo
+	cat nome1 nome 2 -> ve o conteudo dos dois arquivos simultaneamente
+	cat nome1 nome2 > nome3 -> junta 2 arquivos em um
+	cat -n nome1 -> mostra em detalhe o conteudo do arquivo
+	cat nome 4 >> nome3 -> concateno um arquivo no outro sem perder o conteudo dentro
+	
+TOUCH (cria arquivos/modificar data)
+	touch nome2 -> muda a data para a data atual (SE JA EXISTIR)
+	touch nome5 -> cria um arquivo novo
+	touch nome6 nome7 a.txt -> cria varios arquivos
+
+MAN (manual)
+	man clear -> mostra o manual
+	man ls -> mostra o manual
+	
+CNTRL R - ativa a busca do comando ja utilizados
+
+GERENCIAMENTO DE ARQUIVOS
+	mkdir dir1 -> cria o diretorio 
+	mkdir js css img -> cria varios diretorios de uma vez
+	mkdir -v dir2 dir3 dir4 -> especifica o que ta sendo feito com os comandos
+	mkdir -p dir8/dir9/dir10/dir11 -> cria um diretorio com caminhos
+	mkdir ../dir13 -> volta e cria um diretorio
+	
+REMOVENDO ARQUIVOS
+	rm nome1
+	rm nome1 nome3
+	rm -i nome1 -> vai perguntar se vc quer realmente apagar o arquivo
+	rm -dv testando -> remove um diretorio vaizo
+	rm -rfv dir1 -> remove o diretorio que tem varias coisas dentro
+	
+REMOVER DIRETORIOS
+	rmdir test1 
+	rmdir -P teste1/teste2/test4
+	
+COPIANDO ARQUIVOS
+	cp test1 test2 
+	cp c.txt dir1
+	cp dasd.txt sdas.txt copia
+	cp -r x dir5 -> copia no diretorio especificado
+	cp -r dir5/* dirteste 
+	cp doc* dirteste
+	
+MOVENDO DIRETORIOS
+	mv doc1.txt doc4.txt
+	mv doc3.txt Downloads/
+	mv * dir
+	
+PWD -> ver o diretorio atual que tá
+
+ATUALIZANDO:
+REPOSITORIOS
+	sudo apt -get update ->  atualizar todo os pacotes
+APLICATIVOS
+	sudo apt -get upgrade -> atualiza os app
+	sudo apt -get install tree -> instalando o aplicativo tree (pode ser qualquer um ou mais de um de uma vez)
+	sudo apt -get purge tree -> excluindo o aplicativo desejado
+LINUX
+	sudo apt -get dist upgrade -> atualiza o Linux (mas bagunça muito, pode excluir tudo q n usa mais...)
+
+AUTOREMOVE
+	sudo apt -get autoremove -> remove automaticamente app nãoi utilizados mais
+
+SEARCH PACKAGES
+	apt -cache search (nome do pacote)
+
+OBS: pode-se utilizar apenas o sudo apt nas versões atuais do Linux.
+
+FILTRO E BUSCA:
+HEAD
+	head documento.txt -> mostra o topo do arquivo
+	head -n 1 documento.txt -> posso escolher qual linha ele deve me mostrar
+
+TAIL
+	tail documento.txt -> mostra o fim do arquivo
+	tail -n 1 documento.txt -> mostra apenas 1 linha do fim do arquivo
+tail -f documento.txt -> toda vez q for alterado ele irá utilizar o log
+
+GREP
+	grep 'Loren' documento.txt -> procurar o termo selecionado (ele pe case sensitive)
+	grep -c 'Loren' documento.txt -> mostra quantas vezes apareceu o termo
+	grep 'Loren' -r -> procura em todos os arquivos onde ta o termo e mostra
+	grep -v Loren documento.txt --> mostra todas as linhas que NÃO possuem a palavra "Loren"
+	grep Loren *txt --> procura a palavra "Loren" em todos os arquivos txt do diretório.
+
+FIND
+	find -name 'documento.txt'
+	find -iname 'documento.txt' -> procura em q arquivo ta sem ter o case sensitive
+	find empty -type (f para arquivo / d para diretório) isso funciona para todos os comando find
+
+OBS: "!!' ele realisa o ultimo comando utilizado / sudo !!
+OBS: which (comando) mostra de onde o comando ta sendo executado	
+
+NANO -> editor de texto no terminal
+VIM -> editor de texto
+
+GERENCIAMENTO DE USUARIOS
+	sudo adduser user2
+	sudo userdel --remove
+	sudo usermod -c 'user2' user1
+	sudo usermod -l 'user2' -d /home/user2 -m user1 -> muda o nome do user e do diretório base
+	sudo usermod -L user2 -> desabilita o user / -U para habilitar novamente
+Grupos
+	getent group -> Lista todos os grupos criados
+	sudo groupadd -g (numero id) (nome grupo)
+	sudo groupdel (nome o grupo)
+	sudo usermod -a -G (nome do grupo) (nome do user) -> alterar um user de grupo
+	sudo gpasswd -d (nome user) (nome grupo) -> removendo de um grupo
+
+GERENCIAMENTO DE PERMISSÕES
+	X YYY ZZZ WWW <-> drwxr-xr-x
+		X: diretório ou arquivo
+		YYY: permissão do owner(dono)
+		ZZZ: permissão do grupo (que o arquivo pertence)
+		WWW: permissões dos demais usuários(que não são donos do arquivo e não fazem parte do grupo)
+		d: directory
+		r: read
+		w: write
+		x: executar
+		- : não há permissão 
+ALTERANDO PERMISSOES
+
+NUMERICO
+	chmod xxx file/dir
+	xxx = representa as permissões	
+	0: sem permissão ---
+	1: executar --x
+	2: escrever -w-
+	3: ler e executar r-x
+	4: ler r--
+	5: ler e executar rw-
+	7: rwx
+
+SIMBOLICO
+	chmod args file
+	args: +, -, =
+	+ : add
+	- : remove
+	= : determina as permissões 
+	u : owner/user
+	g : group
+	o : others
+	a : all
+	chmod o=x : concede permissão de executar para outros
+	chmod a=rwx : concede todas as permissões a todos
+	chmod g-w : remove permissão de write para grupos
+
+ALTERANDO PROPRIEDADE
+	sudo chown user:grupo c.txt
+	sudo chgrp grupo c.txt
+
+history: mostra os últimos comandos utilizados
